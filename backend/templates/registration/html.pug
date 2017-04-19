@@ -1,0 +1,24 @@
+extends ../base
+block content
+  p Sveiki,
+  p Sveikiname sėkmingai užsiregistravus.
+  table(border="1", style="border-collapse: collapse;")
+    tr
+      td(colspan="2") #{participant.stage.name}
+
+    tr
+      td Dalyvio vardas:
+      td #{participant.first_name}
+    tr
+      td Dalyvio pavardė:
+      td #{participant.last_name}
+    tr
+      td Distancija
+      td #{participant.distance.name}
+
+  if shouldPay
+    p
+      span Apmokėti dalyvavimą galite adresu&nbsp;
+      a(href=participant_url) #{participant_url}
+
+  p Iki susitikimo prie starto linijos!
