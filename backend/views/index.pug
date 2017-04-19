@@ -1,20 +1,13 @@
-html
+html(ng-app="app")
     head
+        base(href="/")
         meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0,  minimal-ui")
-        meta(name="verify-paysera", content=PAYSERA_HEAD)
-        meta(http-equiv='X-UA-Compatible', content='IE=edge')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
         title #{page_title}
-        link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic')
-        script(src="//cdn.tinymce.com/4/tinymce.min.js")
         each css in STATIC_ASSETS.css
             link(rel="stylesheet", href=css)
     body
-        #mount.application
-            .loader
-                include ./loader.html
+        ui-view
         script.
             window.CARE_CONFIG = !{BOOTSTRAP_CONFIG};
-            window.USER_LOGGED = !{IS_LOGGED_IN}
         each js in STATIC_ASSETS.js
             script(src=js)

@@ -1,0 +1,26 @@
+<div>
+    <div class="filter">
+        Sort by:<br/>
+        <button ng-click="ctrl.changeSort('dueDate')" ng-class="{'selected-filter': ctrl.sortField ===  'dueDate'}">Due date</button>
+        <button ng-click="ctrl.changeSort('name')" ng-class="{'selected-filter': ctrl.sortField ===  'name'}" >Name</button>
+        <button ng-click="ctrl.changeSort('priority')" ng-class="{'selected-filter': ctrl.sortField ===  'priority'}">Priority</button>
+
+        <br/>
+        Sort order: {{ctrl.sortOrder}}
+    </div>
+    <div class="col-box">
+        <div class="col">
+            <h1>Pending tasks</h1>
+
+            <ul>
+                <li ng-repeat="task in ctrl.getPendingTasks()"> <task-display  task="task"/></li>
+            </ul>
+        </div>
+        <div class="col">
+            <h1> Overdue tasks</h1>
+            <ul class="red">
+                <li ng-repeat="task in ctrl.getOverdueTasks()"><task-display  task="task"/></li>
+            </ul>
+        </div>
+    </div>
+</div>

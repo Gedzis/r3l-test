@@ -9,8 +9,16 @@ import logger from '../logger';
 const router = express.Router();
 
 router.get('/task/', (req, res) => {
+    let order = null;
+    if (req.query.sort_field && req.query.sort_order) {
+        order = [
+            [req.query.sort_field, req.query.sort_order]
+        ]
+    }
     promise.try(() => {
-        return models.task.findAll()
+        return models.task.findAll({
+            order
+        })
     }).then((result) => {
         return res.json(result);
     }).catch(function(error) {
